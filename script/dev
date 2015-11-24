@@ -1,0 +1,5 @@
+#!/bin/sh
+./node_modules/.bin/webpack --watch --devtool inline-source-map --config webpack-dev.config.js &
+node server.js
+kill %1
+kill %2
