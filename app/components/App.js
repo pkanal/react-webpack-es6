@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,15 +23,6 @@ export default class App extends Component {
   }
 
   render() {
-    const style = {
-      container: {
-        width: '100%',
-        height: 'auto',
-        backgroundColor: '#eeeeee',
-        position: 'absolute',
-        top: 0,
-      },
-    };
 
     /**
     * Clone children and pass window width here instead of adding
@@ -42,10 +34,19 @@ export default class App extends Component {
     });
 
     return (
-      <div style={style.container} className='container'>
+      <div>
         {children}
       </div>
     );
   }
-
 }
+
+function mapStateToProps(state) {
+  const { counter } = state;
+
+  return {
+    counter,
+  };
+}
+
+export default connect(mapStateToProps)(App);
